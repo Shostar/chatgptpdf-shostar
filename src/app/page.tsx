@@ -1,11 +1,12 @@
 import { Button } from '@/components/ui/button'
-import { UserButton } from '@clerk/nextjs'
+import { UserButton,auth } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LogIn } from 'lucide-react'
+import FileUpload from '@/components/ui/FileUpload'
 
 export default async function Home() {
-  const [userId] = await auth []
+  const {userId} = await auth()
   const isAuth = !!userId
   return [
   <div className='w-screen min-h-screen bg-gradient-to-b from-orange-500 to-yellow-300'>
@@ -18,7 +19,7 @@ export default async function Home() {
 
 <div className="flex mt-2">
   {isAuth &&(
-    <botton>Go to Chats</botton>
+    <button>Go to Chats</button>
   )}
   
 </div>
@@ -27,16 +28,14 @@ export default async function Home() {
     </p>
     <div className='w-full mt-4'>
     {isAuth ? (
-      <h1>fileupload</h1>
+      <FileUpload/>
     ):(
       <Link href="/sign-in">
         <button>login to get started!
-          <LogIn className='w-4 h-4 m1-2'></LogIn>
+          <LogIn className='w-4 h-4 m1-2'  />
         </button>
       </Link>
-    )
-    
-    }
+    )}
     </div>
       </div>
     </div>
