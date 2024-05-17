@@ -1,12 +1,12 @@
 import { Button } from '@/components/ui/button'
-import { UserButton,auth } from '@clerk/nextjs'
+import { UserButton,useAuth } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LogIn } from 'lucide-react'
 import FileUpload from '@/components/FileUpload'
 
 export default async function Home() {
-  const {userId} = await auth()
+  const {userId} = useAuth()
   const isAuth = !!userId
   return [
   <div className='w-screen min-h-screen bg-gradient-to-b from-orange-500 to-yellow-300'>
